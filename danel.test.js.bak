@@ -1,0 +1,46 @@
+import {sumar,getMaxFromArray,getProduct} from "../src/functions.js";
+
+describe("test de funciones generales",()=>{
+
+    const array1 = [];
+    const array2 = [];
+
+    beforeAll(()=>{
+        for (let i = 0; i < 10; i++){
+            array1.push(i);
+            array2.push(100-i);
+        }
+    });
+
+    test("comprobar que la función sumar suma",()=>{
+        expect(sumar(1,2)).toBe(3);
+       /*  expect(sumar("a",[])).toThrow("los dos argumentos deben ser numéricos.");
+        expect(sumar(1,"2")).toThrow("los dos argumentos deben ser numéricos.");
+        expect(sumar("1",2)).toThrow("los dos argumentos deben ser numéricos."); */
+        expect(sumar(-1,-2)).toBe(-3);
+    })
+
+    test("obtener el valor máximo de un array",()=>{
+        const maxValue1 = 9;
+        const maxValue2 = 100;
+        expect(getMaxFromArray(array1)).toBe(9);
+        expect(getMaxFromArray(array2)).toBe(100);
+        expect(getMaxFromArray([])).toBe(0);
+
+    })
+
+    test("Devolver un producto con titulo, stock y precio",()=>{
+        const product = getProduct();
+        expect(product).toHaveProperty("title");
+        expect(product).toHaveProperty("price");
+        expect(product).toHaveProperty("stock");
+        expect(product.title).not.toBeNull();
+        expect(product.price).not.toBeNull();
+        expect(product.stock).not.toBeNull();
+        expect(product.title).not.toBeUndefined();
+        expect(product.price).not.toBeUndefined();
+        expect(product.stock).not.toBeUndefined();
+    })
+
+
+})
