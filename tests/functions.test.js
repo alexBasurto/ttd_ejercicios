@@ -54,6 +54,8 @@ describe("Tests de funciones generales", () => {
             age: 34,
         };
 
+        const user1 = createUser(nombre1, apellido1, edad1);
+
         const nombre2 = "Mikel";
         const apellido2 = "Urrestarazu";
         const edad2 = -5;
@@ -67,6 +69,15 @@ describe("Tests de funciones generales", () => {
         const edad4 = "Treintaydos";
 
         expect(createUser(nombre1, apellido1, edad1)).toEqual(respuesta1);
+
+        expect(user1).toHaveProperty("username");
+        expect(user1).toHaveProperty("lastname");
+        expect(user1).toHaveProperty("age");
+
+        expect(user1.username).toEqual(nombre1);
+        expect(user1.lastname).toEqual(apellido1);
+        expect(user1.age).toEqual(edad1);
+
         expect(() => {
             createUser(nombre2, apellido2, edad2);
         }).toThrow(Error);
